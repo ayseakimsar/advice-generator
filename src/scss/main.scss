@@ -1,0 +1,78 @@
+$primary-colors: (
+  "light-cyan": hsl(193, 38%, 86%),
+  "neon-green": hsl(150, 100%, 66%),
+);
+
+$neutral-colors: (
+  "grayish-blue": hsl(217, 19%, 38%),
+  "dark-grayish-blue": hsl(217, 19%, 24%),
+  "dark-blue": hsl(218, 23%, 16%),
+);
+
+@function getColor($color-group, $color-name) {
+  @return map-get($color-group, $color-name);
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  font-family: "Manrope", sans-serif;
+  height: 100vh;
+  background: getColor($neutral-colors, dark-blue);
+  color: getColor($primary-colors, light-cyan);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: getColor($neutral-colors, dark-grayish-blue);
+  width: 540px;
+  height: 300px;
+  font-size: 28px;
+  font-weight: 800;
+  border-radius: 16px;
+  padding: 16px;
+  text-align: center;
+  position: relative;
+
+  .advice-no {
+    font-size: 12px;
+    letter-spacing: 3px;
+    color: getColor($primary-colors, neon-green);
+    margin-bottom: 16px;
+  }
+
+  .quote {
+    margin-bottom: 42px;
+  }
+}
+
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  border: 0;
+  background-color: getColor($primary-colors, neon-green);
+  cursor: pointer;
+  transition: all 0.3s;
+
+  &:hover {
+    box-shadow: 0px 0px 20px 5px hsla(150, 100%, 66%, 0.588);
+  }
+}
